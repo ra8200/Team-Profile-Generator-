@@ -1,0 +1,22 @@
+{
+  "name": "team-profile-generator-",
+  "version": "1.0.0",
+  "description": "create a team profile generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ra8200/Team-Profile-Generator-.git"
+  },
+  "author": "Razi Alawamleh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ra8200/Team-Profile-Generator-/issues"
+  },
+  "homepage": "https://github.com/ra8200/Team-Profile-Generator-#readme",
+  "dependencies": {
+    "inquirer": "^8.1.1"
+  }
+}
