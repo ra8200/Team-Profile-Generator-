@@ -1,9 +1,9 @@
 var inquirer = require("inquirer");
-var Manager = "./classObjects/Manager.js"
-var Engineer = "./classObjects/Engineer.js"
-var Inter = "./classObjects/Inter.js"
+var Manager = require( "./classObjects/Manager.js")
+var Engineer = require("./classObjects/Engineer.js")
+var Intern = require("./classObjects/Inter.js")
 var managerArray = []
-var interArray = []
+var internArray = []
 var engineerArray=[]
 
 function startTeam(){
@@ -23,12 +23,12 @@ inquirer
                 getManagerDetails();
                 break;
             case "Engineer":
-                getEnginnerDetails();
+                getEngineerDetails();
                 break;
             case "Intern":
                 getInternDetails();
                 break;
-            default: process.exit(0);
+            default:generateHTML();
         }
     })
 }
@@ -127,9 +127,14 @@ inquirer
         }
     ])  .then (response =>{
         var myIntern = new Intern(response.name, response.id,response.email,response.school);
-        managerArray.push(myIntern);
+        internArray.push(myIntern);
         startTeam()
     })
+    }
+
+    function generateHTML () {
+        console.log(managerArray, engineerArray, internArray);
+        process.exit(0)
     }
 
 
