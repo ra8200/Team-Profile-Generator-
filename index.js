@@ -65,6 +65,72 @@ inquirer
         startTeam()
     })
     }
+    function getEngineerDetails () {
+        inquirer
+    .prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "What is your name?",
+          
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is your email?",
+          
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is your id?",
+          
+        },
+        {
+            type: "input",
+            name: "gitHub",
+            message: "What is your GitHub username?",
+          
+        }
+    ])  .then (response =>{
+        var myEngineer = new Engineer(response.name, response.id,response.emil,response.gitHub);
+        engineerArray.push(myEngineer);
+        startTeam()
+    })
+    }
+    function getInternDetails () {
+        inquirer
+    .prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "What is your name?",
+          
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is your email?",
+          
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is your id?",
+          
+        },
+        {
+            type: "input",
+            name: "school",
+            message: "What is your school?",
+          
+        }
+    ])  .then (response =>{
+        var myIntern = new Intern(response.name, response.id,response.email,response.school);
+        managerArray.push(myIntern);
+        startTeam()
+    })
+    }
 
 
 
