@@ -1,3 +1,5 @@
+// Test for Employee Object
+// requiring the Employee.js file
 const Employee = require('../classObjects/Employee');
 
 // creates employee object 
@@ -9,29 +11,29 @@ test('creates an employee object', () => {
     expect(employee.email).toEqual(expect.any(email));
 });
 
-// gets id from getId() 
+// gets id from getName() 
 test('gets employee name', () => {
     const employee = new Employee('Razi', 22, 'razi.alawamleh@gmail.com');
 
     expect(employee.getName()).toEqual(expect.any(String));
 });
 
-// gets id from getId() 
-test('gets employee ID', () => {
+// Gets id from getId() 
+test('Gets employee ID', () => {
     const employee = new Employee('Razi', 22, 'razi.alawamleh@gmail.com');
 
     expect(employee.getId()).toEqual(expect.any(Number));
 });
 
-// gets emails from getEmail()
-test('gets employee email', () => {
+// Gets emails from getEmail()
+test('Gets employee email', () => {
     const employee = new Employee('Razi', 22, 'razi.alawamleh@gmail.com');
 
     expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email.toString()));
 });
 
-// gets role from getRole()
-test('gets role of employee', () => {
+// Gets role from getRole()
+test('Gets role of employee', () => {
     const employee = new Employee('Razi', 22, 'razi.alawamleh@gmail.com');
 
     expect(employee.getRole()).toEqual("Employee");

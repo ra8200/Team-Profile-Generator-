@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const Manager = require( "./classObjects/Manager.js")
 const Engineer = require("./classObjects/Engineer.js")
-const Intern = require("./classObjects/Inter.js")
+const Intern = require("./classObjects/Intern.js")
 const managerArray = []
 const internArray = []
 const engineerArray=[]
