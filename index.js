@@ -1,10 +1,10 @@
-var inquirer = require("inquirer");
-var Manager = require( "./classObjects/Manager.js")
-var Engineer = require("./classObjects/Engineer.js")
-var Intern = require("./classObjects/Inter.js")
-var managerArray = []
-var internArray = []
-var engineerArray=[]
+const inquirer = require("inquirer");
+const Manager = require( "./classObjects/Manager.js")
+const Engineer = require("./classObjects/Engineer.js")
+const Intern = require("./classObjects/Inter.js")
+const managerArray = []
+const internArray = []
+const engineerArray=[]
 
 function startTeam(){
 inquirer
@@ -60,7 +60,7 @@ inquirer
           
         }
     ])  .then (response =>{
-        var myManager = new Manager(response.name, response.id,response.emil,response.officeNumber);
+        let myManager = new Manager(response.name, response.id,response.emil,response.officeNumber);
         managerArray.push(myManager);
         startTeam()
     })
@@ -93,7 +93,7 @@ inquirer
           
         }
     ])  .then (response =>{
-        var myEngineer = new Engineer(response.name, response.id,response.emil,response.gitHub);
+        let myEngineer = new Engineer(response.name, response.id,response.emil,response.gitHub);
         engineerArray.push(myEngineer);
         startTeam()
     })
@@ -126,7 +126,7 @@ inquirer
           
         }
     ])  .then (response =>{
-        var myIntern = new Intern(response.name, response.id,response.email,response.school);
+        let myIntern = new Intern(response.name, response.id,response.email,response.school);
         internArray.push(myIntern);
         startTeam()
     })
