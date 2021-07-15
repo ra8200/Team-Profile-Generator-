@@ -12,7 +12,7 @@ const internArray = []
 const engineerArray=[]
 
 function startTeam(){
-inquirer
+return inquirer
     .prompt([
         {
             type: "list",
@@ -33,12 +33,13 @@ inquirer
             case "Intern":
                 return getInternDetails();
                 break;
-            default:generateHTML();
+            default:
+                return managerArray.concat(engineerArray).concat(internArray);
         }
     })
 }
     function getManagerDetails () {
-        inquirer
+        return inquirer
     .prompt([
         {
             type: "input",
@@ -65,13 +66,13 @@ inquirer
           
         }
     ])  .then (response =>{
-        let myManager = new Manager(response.name, response.id,response.emil,response.officeNumber);
+        let myManager = new Manager(response.name, response.id, response.email, response.officeNumber);
         managerArray.push(myManager);
-        startTeam()
+        return startTeam()
     })
     }
     function getEngineerDetails () {
-        inquirer
+        return inquirer
     .prompt([
         {
             type: "input",
@@ -99,13 +100,13 @@ inquirer
         }
         
     ])  .then (response =>{
-        let myEngineer = new Engineer(response.name, response.id,response.emil,response.gitHub);
+        let myEngineer = new Engineer(response.name, response.id, response.email, response.gitHub);
         engineerArray.push(myEngineer);
-        startTeam()
+        return startTeam()
     })
     }
     function getInternDetails () {
-        inquirer
+        return inquirer
     .prompt([
         {
             type: "input",
@@ -135,21 +136,23 @@ inquirer
     ])  .then (response =>{
         let myIntern = new Intern(response.name, response.id,response.email,response.school);
         internArray.push(myIntern);
-        startTeam()
+        return startTeam()
     })
     }
 
     function generateHTML (ta) {
         console.log(managerArray, engineerArray, internArray);
-        var cards = ta.map (e => e.htmlCard());
+        var cards = ta.map (e => e.htmlCard()).join('\n');
         
-        return TOP + cards + BOTTOM;
+        var html = TOP + cards + BOTTOM;
+        console.log(`html: ${html}`);
+        return html;
     }
-    startTeam()
 
 
     const writeFile = data => {
-        fs.writeFile('./display/index.html',data, err => {
+        try {
+        fs.writeFileSync('./display/index.html',data) /*, err => {
             // if there is an error 
             if (err) {
                 console.log(err);
@@ -158,13 +161,17 @@ inquirer
             } else {
                 console.log("Your team profile has been successfully created! Please check out the index.html")
             }
-        })
+        })*/
+    } catch (err) {
+        console.log(err);
+    }
     }; 
         startTeam()
       .then(teamArray => {
         return generateHTML(teamArray);
       })
       .then(pageHTML => {
+        console.log(`page: ${pageHTML}`);
         return writeFile(pageHTML);
       })
       .then(_ => (process.exit(0)))
