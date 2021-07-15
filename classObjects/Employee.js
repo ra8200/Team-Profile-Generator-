@@ -23,7 +23,7 @@ class Employee{
     }
 
     htmlCard() {
-        return `<div class="col-4 mt-4"><div class="card h-100"><div class="card-header"><h3>${this.name}</h3><h4>${this.getRole()}</h4></div><div class="card-body"><p class="nid">ID: ${this.id}</p><p class="email">Email: <a href="mailto:${this.email}"></a></p>${this.getMoreInfo()}</div></div></div>`
+        return `<div class="col-4 mt-4"><div class="card h-100"><div class="card-header"><h3>${this.name}</h3><h4>${this.getRole()}</h4></div><div class="card-body"><p class="nid">ID: ${this.id}</p><p class="email">Email: <a href="mailto:${this.email}">${this.email}</a></p>${this.getMoreInfo()}</div></div></div>`
         
     }
 }
