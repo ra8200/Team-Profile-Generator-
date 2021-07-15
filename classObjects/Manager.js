@@ -11,6 +11,8 @@ class Manager extends Employee{
     getOfficeNumber(){
         return this.officeNumber;
     }
+    getMoreInfo() {
+        retun `<p class="office">Office Number: ${this.officeNumber}</p>`
+    }
 }
-
 module.exports = Manager

@@ -1,6 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+const TOP = fs.readFileSync('./display/top.html');
+const BOTTOM = fs.readFileSync('./display/bottom.html');
+
 const Manager = require( "./classObjects/Manager.js")
 const Engineer = require("./classObjects/Engineer.js")
 const Intern = require("./classObjects/Intern.js")
@@ -136,13 +139,12 @@ inquirer
     })
     }
 
-    function generateHTML () {
+    function generateHTML (ta) {
         console.log(managerArray, engineerArray, internArray);
-        process.
+        var cards = ta.map (e => e.htmlCard());
+        
+        return TOP + cards + BOTTOM;
     }
-
-
-
     startTeam()
 
 
@@ -158,14 +160,15 @@ inquirer
             }
         })
     }; 
-    
-    startTeam()
+        startTeam()
       .then(teamArray => {
         return generateHTML(teamArray);
       })
       .then(pageHTML => {
         return writeFile(pageHTML);
       })
+      .then(_ => (process.exit(0)))
       .catch(err => {
      console.log(err);
+     process.exit(1)
       });
